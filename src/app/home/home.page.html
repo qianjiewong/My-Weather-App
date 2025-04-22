@@ -1,20 +1,72 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="header">
+    <button class="back-button" [routerLink]="['/landing']">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </button>
+    <h1 class="app-title">My Weather App</h1>
+  </div>
+  
+  <div class="search-container">
+    <ion-searchbar [(ngModel)]="cityName" 
+                  (ngModelChange)="loadData()" 
+                  placeholder="Search for city" 
+                  class="custom-searchbar"
+                  animated></ion-searchbar>
+  </div>
+  
+  <div class="content-container" *ngIf="!loading">
+    <ion-card class="weather-card primary-card">
+      <div class="card-header">
+        <div class="header-left">
+          <h2 class="card-title">Today's Report</h2>
+        </div>
+        <div class="header-right">
+          <span class="date">{{todayDate | date: "EEE dd MMM"}}</span>
+        </div>
+      </div>
+      
+      <div class="weather-main">
+        <div class="temperature-container">
+          <span class="temperature">{{(weatherTemp?.temp - 273.15).toFixed(0)}}</span>
+          <span class="degree-symbol">°</span>
+        </div>
+        <div class="weather-icon">
+          <img [src]="weatherIcon" alt="Weather icon">
+        </div>
+      </div>
+      
+      <div class="location">
+        <ion-icon name="location"></ion-icon>
+        <span>{{cityName}}</span>
+      </div>
+    </ion-card>
+    
+    <ion-card class="weather-card details-card">
+      <div class="weather-detail">
+        <span class="detail-label">Maximum Temp</span>
+        <span class="detail-value">{{(weatherTemp.temp_max - 273.15).toFixed(0)}}°</span>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="weather-detail">
+        <span class="detail-label">Minimum Temp</span>
+        <span class="detail-value">{{(weatherTemp.temp_min - 273.15).toFixed(0)}}°</span>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="weather-detail">
+        <span class="detail-label">Humidity</span>
+        <span class="detail-value">{{weatherTemp.humidity}} %</span>
+      </div>
+    </ion-card>
+  </div>
+  
+  <div class="empty-state" *ngIf="loading">
+    <div class="illustration">
+      <img src="../../assets/pic2.png" alt="Empty state illustration">
+    </div>
+    <p class="empty-message">Enter City to Search...</p>
   </div>
 </ion-content>

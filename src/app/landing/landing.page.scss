@@ -1,0 +1,98 @@
+ion-content {
+    --background: linear-gradient(135deg, #9C89B8 0%, #7a6a9a 100%);
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
+      radial-gradient(circle at 85% 85%, rgba(0, 0, 0, 0.05) 0%, transparent 30%);
+  }
+  
+  .landing-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2rem;
+  }
+  
+  .illustration-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    
+    .landing-image {
+      max-width: 100%;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+      animation: float 4s ease-in-out infinite;
+    }
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    .highlight {
+      color: #F6B844;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #F6B844;
+        border-radius: 2px;
+        opacity: 0.6;
+      }
+    }
+  }
+  
+  .subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .get-started-btn {
+    --background: #F6B844;
+    --background-hover: #e6a832;
+    --background-activated: #e6a832;
+    --background-focused: #e6a832;
+    --color: #333;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 20px rgba(246, 184, 68, 0.3);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    height: 52px;
+    margin-top: 1rem;
+    width: 80%;
+    max-width: 300px;
+    text-transform: none;
+    
+    ion-icon {
+      margin-left: 8px;
+    }
+  }
